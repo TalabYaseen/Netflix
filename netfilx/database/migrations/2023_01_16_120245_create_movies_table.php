@@ -13,15 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('movies', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->boolean('role')->default(false);
-            $table->rememberToken();
+            // $table->integer('movie_id');
+            $table->string('movie_name');
+            // $table->text('movie_picture_id');
+            $table->text('movie_description');
+            $table->year('movie_gener');
             $table->timestamps();
+            // $table->foreign('movie_picture_id')
+            // ->references('picture_id')->on('pictures')->onDelete('cascade');
         });
     }
 
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('movies');
     }
 };
